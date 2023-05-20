@@ -21,12 +21,6 @@ class Filehandling {
     });
   }
 
-  appendInFile(data) {
-    fs.appendFile(this.fileName, data, (err) => {
-      if (err) throw err;
-    });
-    return true;
-  }
   appendToFile = (content) => {
     return new Promise((resolve, reject) => {
       fs.appendFile(this.fileName, content, (err) => {
