@@ -1,21 +1,12 @@
-const versionList = require("./getVersions");
-
-versionList("/Users/piyushagarwal/Downloads/Piyush/Change Log/Documents")
-  .then((files) => {
-    sortVersions(files);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
 const sortVersions = (files) => {
   let versionArray = [];
 
   files.forEach((element) => {
-    const myArray = element.split(".");
-    let integerArray = myArray.map(Number);
+    const myArray = element.split("."); //This will split the string into an array "2.1.2" -> ["2","1","2"]
+    let integerArray = myArray.map(Number); //This will make all the string elements of the array to numbers ["2","1","2"] -> [2,1,2]
     versionArray.push(integerArray);
   });
+  //This will create an array of array
 
   versionArray.sort((a, b) => {
     for (let i = 0; i < a.length; i++) {
@@ -25,7 +16,9 @@ const sortVersions = (files) => {
     }
     return 0;
   });
+  //This will sort the array
 
-  versionArray.reverse();
-  console.log(versionArray);
+  return versionArray.reverse(); //This will reverse the array
 };
+
+module.exports = sortVersions;
